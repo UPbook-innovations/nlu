@@ -257,6 +257,7 @@ class PipelineQueryVerifier():
         c.component_info.output_column_names = ['sentence_embeddings@'+storage_ref]
 
         return c
+
     @staticmethod
     def check_and_fix_nlu_pipeline(pipe: NLUPipeline):
         """Check if the NLU pipeline is ready to transform data and return it.

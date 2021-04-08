@@ -4,17 +4,50 @@ class NameSpace():
     # These reference tell NLU to which component resolved to route a request, they help NLU map a NLP reference to the correct class
     word_embeddings = ['embed','bert','electra','albert','elmo','glove','xlnet','biobert','covidbert','tfhub_use']
     sentence_embeddings = ['embed_sentence','use', 'bert', 'electra','tfhub_use']
-    classifiers = ['classify', 'e2e', 'emotion', 'sentiment', 'ner',
-                   'pos', 'trec6','trec50', 'questions',
-                   'sarcasm','emotion', 'spam','fakenews', 'cyberbullying',
-                   'wiki','wiki_7', 'wiki_20','yake','toxic'
-                   ]
+    classifiers = [
+        'classify',
+        'e2e',
+        'emotion',
+        'sentiment',
+        'ner',
+        'pos',
+        'trec6',
+        'trec50',
+        'questions',
+        'sarcasm',
+        'emotion',
+        'spam',
+        'fakenews',
+        'cyberbullying',
+        'wiki',
+        'wiki_7',
+        'wiki_20',
+        'yake',
+        'toxic'
+    ]
     seq2seq = ['t5','marian','translate_to']
-    actions = ['tokenize', 'sentence', 'embed', 'embed_sentence', 'embed_chunk','classify', 'chunk', 'pos', 'ner',
-               'dep', 'dep.untyped', 'lemma', 'match', 'norm', 'spell','stem', 'stopwords','clean','ngram',
-                'translate_to',
-
-               ]
+    actions = [
+        'tokenize',
+        'sentence',
+        'embed',
+        'embed_sentence',
+        'embed_chunk',
+        'classify',
+        'chunk',
+        'pos',
+        'ner',
+        'dep',
+        'dep.untyped',
+        'lemma',
+        'match',
+        'norm',
+        'spell',
+        'stem',
+        'stopwords',
+        'clean',
+        'ngram',
+        'translate_to',
+    ]
     trainable_model_references = ['classifier_dl']
 
 

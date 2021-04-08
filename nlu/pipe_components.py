@@ -1,5 +1,7 @@
 from nlu import *
-class NLUComponent():
+
+
+class NLUComponent:
     '''
         This class loads all the components in the components folder.
         It acts as an accessor to every component.
@@ -26,7 +28,7 @@ class NLUComponent():
         self.print_parameters()
 
 
-class  SparkNLUComponent(NLUComponent):
+class SparkNLUComponent(NLUComponent):
     def __init__(self, component_name, component_type):
         # super().__init__(annotator_class, component_type)
         # super(SparkNLUComponent,self).__init__(annotator_class, component_type)
@@ -46,15 +48,15 @@ class  SparkNLUComponent(NLUComponent):
         '''
         for k in self.model.extractParamMap():
             if "inputCol" in str(k):
-                if isinstance(self.model.extractParamMap()[k], str) :
-                    self.component_info.spark_input_column_names =  [self.model.extractParamMap()[k]]
-                else :
-                    self.component_info.spark_input_column_names =  self.model.extractParamMap()[k]
+                if isinstance(self.model.extractParamMap()[k], str):
+                    self.component_info.spark_input_column_names = [self.model.extractParamMap()[k]]
+                else:
+                    self.component_info.spark_input_column_names = self.model.extractParamMap()[k]
             if "outputCol" in str(k):
-                if isinstance(self.model.extractParamMap()[k], str) :
-                    self.component_info.spark_output_column_names =  [self.model.extractParamMap()[k]]
-                else :
-                    self.component_info.spark_output_column_names =  self.model.extractParamMap()[k]
+                if isinstance(self.model.extractParamMap()[k], str):
+                    self.component_info.spark_output_column_names = [self.model.extractParamMap()[k]]
+                else:
+                    self.component_info.spark_output_column_names = self.model.extractParamMap()[k]
             # if "labelCol" in str(k):
             #     if isinstance(self.model.extractParamMap()[k], str) :
             #         self.component_info['spark_label_column_names'] =  [self.model.extractParamMap()[k]]
