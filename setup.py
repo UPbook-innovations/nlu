@@ -16,11 +16,10 @@ here = path.abspath(path.dirname(__file__))
 # Get the long description from the README file
 with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
-#spark-nlp>=2.7.1,<2.8
-#spark-nlp==3.0.1 pyspark==3.1.1
 
 REQUIRED_PKGS = [
     # 'pyspark>=2.4.0,<2.5',
+    # spark-nlp>=2.7.1,<2.8
     'pyspark>=3.1.1',
     'spark-nlp>=3.0.1',
     'numpy',

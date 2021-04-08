@@ -22,7 +22,7 @@ from pyspark.sql import types as t
 class BasePipe(dict):
     # we inherhit from dict so the pipe is indexable and we have a nice shortcut for accessing the spark nlp model
     def __init__(self):
-        self.nlu_ref=''
+        self.nlu_ref = ''
         self.raw_text_column = 'text'
         self.raw_text_matrix_slice = 1  # place holder for getting text from matrix
         self.spark_nlp_pipe = None
@@ -1163,19 +1163,20 @@ class NLUPipeline(BasePipe):
             else :
                 logger.info('Adding missing sentence Dependency because it is missing for outputlevel=Sentence')
                 self.add_missing_sentence_component()
+
     def save(self, path, component='entire_pipeline', overwrite=False):
 
-        if nlu.is_running_in_databricks() :
+        if nlu.is_running_in_databricks():
             if path.startswith('/dbfs/') or path.startswith('dbfs/'):
                 nlu_path = path
                 if path.startswith('/dbfs/'):
-                    nlp_path =  path.replace('/dbfs','')
-                else :
-                    nlp_path =  path.replace('dbfs','')
+                    nlp_path = path.replace('/dbfs', '')
+                else:
+                    nlp_path = path.replace('dbfs', '')
 
-            else :
+            else:
                 nlu_path = 'dbfs/' + path
-                if path.startswith('/') : nlp_path = path
+                if path.startswith('/'): nlp_path = path
                 else : nlp_path = '/' + path
 
             if not self.is_fitted and self.has_trainable_components:
@@ -1185,15 +1186,14 @@ class NLUPipeline(BasePipe):
                 self.spark_transformer_pipe.save(nlp_path)
                 self.write_nlu_pipe_info(nlu_path)
 
-
         if overwrite and not nlu.is_running_in_databricks():
             import shutil
-            shutil.rmtree(path,ignore_errors=True)
+            shutil.rmtree(path, ignore_errors=True)
 
-
-        if not self.is_fitted :
+        if not self.is_fitted:
             self.fit()
             self.is_fitted = True
+
         if component == 'entire_pipeline':
             self.spark_transformer_pipe.save(path)
             self.write_nlu_pipe_info(path)
@@ -1205,8 +1205,9 @@ class NLUPipeline(BasePipe):
 
         print(f'Stored model in {path}')
         # else : print('Please fit untrained pipeline first or predict on a String to save it')
+
     def predict(self, data, output_level='', positions=False, keep_stranger_features=True, metadata=False,
-                multithread=True, drop_irrelevant_cols=True, verbose=False,return_spark_df=False):
+                multithread=True, drop_irrelevant_cols=True, verbose=False, return_spark_df=False):
         '''
         Annotates a Pandas Dataframe/Pandas Series/Numpy Array/Spark DataFrame/Python List strings /Python String
 
@@ -1246,7 +1247,8 @@ class NLUPipeline(BasePipe):
                 self.fit(data)
             else:
                 self.fit()
-        
+
+        # TODO: try to use
         # self.configure_light_pipe_usage(len(data), multithread)
 
         sdf = None
